@@ -16,8 +16,8 @@
 
         body {
             background: white;
-            font-family: 'Arial', sans-serif; /* Match font */
-            color: green; /* Match text color */
+            font-family: 'Arial', sans-serif;
+            color: green;
         }
 
         .container {
@@ -51,17 +51,18 @@
             animation-duration: 2s;
             animation-iteration-count: infinite;
             animation-timing-function: ease;
-            background: #00ff00; /* Green */
+            background: #00ff00;
             border-radius: 50%;
             content: '';
             display: block;
             height: 100%;
             width: 100%;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
         }
 
         .dot:nth-of-type(even)::before {
-            background-color: #0000ff; /* Blue */
-            box-shadow: inset 0 0 4px #000099;
+            background-color: #0000ff;
+            box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff;
         }
 
         .welcome {
@@ -96,6 +97,9 @@
             text-align: center;
             flex-direction: column;
             scroll-snap-align: start;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-in-out;
         }
 
         @keyframes movement {
@@ -126,17 +130,58 @@
             }
         }
 
-        .user-list img {
+        .ai-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #000, #001);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #00ff00;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .ai-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .ai-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: #00ff00;
             border-radius: 50%;
+            opacity: 0.5;
         }
     </style>
 </head>
 <body>
+    <div class="ai-particles"></div>
     <div class="container">
         <div class="loader">
             <!-- Dots will be dynamically added here -->
         </div>
         <div class="welcome">Welcome to MedKit.ai</div>
+    </div>
+    <div class="ai-transition">
+        <div class="ai-text">Initializing AI-powered Medical Assistant...</div>
     </div>
     <div class="content">
         <section>
@@ -148,7 +193,7 @@
             <p>Get accurate predictions and consult doctors online in one place.</p>
         </section>
         <section>
-            <h2>MedKit.ai</h2>
+            <h2>MedKit.ai</h3>
             <h3>Intelligent Medical Chatbot</h3>
             <p>Get accurate predictions and consult doctors online in one place.</p>
         </section>
@@ -178,7 +223,6 @@
             const dotSize = 10;
             const dotSpace = 15;
 
-
             const loaderWidth = (dotCount / 2) * (dotSize + dotSpace);
             
             loader.style.width = `${loaderWidth}px`;
@@ -198,14 +242,67 @@
 
             setTimeout(() => {
                 document.querySelector('.loader').style.display = 'none';
-                document.querySelector('.welcome').style.display = 'block';
+                const welcome = document.querySelector('.welcome');
+                welcome.style.display = 'block';
+                setTimeout(() => {
+                    welcome.style.opacity = '1';
+                    welcome.style.transform = 'scale(1)';
+                }, 100);
             }, 5000);
 
             setTimeout(() => {
                 document.querySelector('.welcome').style.display = 'none';
-                document.querySelector('.content').style.display = 'block';
+                const aiTransition = document.querySelector('.ai-transition');
+                aiTransition.style.opacity = '1';
+                
+                setTimeout(() => {
+                    const aiText = document.querySelector('.ai-text');
+                    aiText.style.opacity = '1';
+                    aiText.style.transform = 'translateY(0)';
+                }, 500);
+
+                setTimeout(() => {
+                    aiTransition.style.display = 'none';
+                    document.querySelector('.content').style.display = 'block';
+                    const sections = document.querySelectorAll('section');
+                    sections.forEach((section, index) => {
+                        setTimeout(() => {
+                            section.style.opacity = '1';
+                            section.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    });
+                }, 3000);
             }, 7000);
+
+            // Create particles
+            const particlesContainer = document.querySelector('.ai-particles');
+            for (let i = 0; i < 50; i++) {
+                createParticle(particlesContainer);
+            }
         });
+
+        function createParticle(container) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 5 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 2 + 1;
+            particle.animate([
+                { transform: 'translate(0, 0)' },
+                { transform: `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)` }
+            ], {
+                duration: duration * 1000,
+                iterations: Infinity,
+                direction: 'alternate',
+                easing: 'ease-in-out'
+            });
+            
+            container.appendChild(particle);
+        }
     </script>
 </body>
 </html>
