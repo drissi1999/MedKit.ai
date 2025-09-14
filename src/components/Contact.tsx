@@ -24,7 +24,7 @@ Message: ${formData.message || 'No additional message'}
 This person wants to join the AI MedKit waitlist.`;
 
     // Open email client
-    const mailtoLink = `mailto:drissihoucine1999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:houcinemedkit.ai@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(mailtoLink);
 
     // Show confirmation
@@ -90,7 +90,7 @@ This person wants to join the AI MedKit waitlist.`;
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 mb-1 text-lg">24/7 Support Hotline</h4>
-                  <p className="text-gray-700 text-lg">+1 (555) AI-MEDKIT</p>
+                  <p className="text-gray-700 text-lg">+33 (06) 09 60 61 89 AI-MEDKIT</p>
                   <p className="text-gray-600">Immediate technical assistance</p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ This person wants to join the AI MedKit waitlist.`;
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 mb-1 text-lg">Direct Contact</h4>
-                  <p className="text-gray-700 text-lg">drissihoucine1999@gmail.com</p>
+                  <p className="text-gray-700 text-lg">houcinemedkit.ai@gmail.com</p>
                   <p className="text-gray-600">Response within 4 hours</p>
                 </div>
               </div>
