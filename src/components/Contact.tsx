@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, Calendar, Play, Users } from 'lucide-react';
+import { Phone, Mail, Clock, Send, Calendar, Play, Users } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,17 +15,19 @@ const Contact = () => {
 
     // Create email content
     const subject = `AI MedKit Waitlist - ${formData.name}`;
-    const body = `Name: ${formData.name}
-Email: ${formData.email}
-Organization: ${formData.organization || 'Not specified'}
-Medical Specialty: ${formData.specialty || 'Not specified'}
-Message: ${formData.message || 'No additional message'}
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Organization: ${formData.organization || 'Not specified'}`,
+      `Medical Specialty: ${formData.specialty || 'Not specified'}`,
+      `Message: ${formData.message || 'No additional message'}`,
+      '',
+      'This person wants to join the AI MedKit waitlist.'
+    ].join('\n');
 
-This person wants to join the AI MedKit waitlist.`;
-
-    // Open email client
+    // Open email client (use location to avoid popup blockers)
     const mailtoLink = `mailto:houcinemedkit.ai@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink);
+    window.location.href = mailtoLink;
 
     // Show confirmation
     alert('✅ Your email client should open with a pre-filled message. Send it to join the waitlist!');
