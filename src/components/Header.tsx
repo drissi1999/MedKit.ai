@@ -4,6 +4,14 @@ import { Menu, X, Activity } from 'lucide-react';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
       <div className="container">
@@ -22,7 +30,7 @@ const Header = () => {
             <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Features</a>
             <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Pricing</a>
             <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Contact</a>
-            <button className="btn-primary">Get Started</button>
+            <button className="btn-primary" onClick={scrollToContact}>Get Started</button>
           </nav>
 
           <button 
@@ -38,8 +46,10 @@ const Header = () => {
             <div className="flex flex-col space-y-4">
               <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium">Features</a>
               <a href="#pricing" className="text-gray-600 hover:text-gray-900 font-medium">Pricing</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900 font-medium">Contact</a>
-              <button className="btn-primary w-full">Get Started</button>
+              <a href="#contact" className="text-gray-600 hover:text-gray-900 font-medium" onClick={() => setIsMenuOpen(false)}>
+                Contact
+              </a>
+              <button className="btn-primary w-full" onClick={scrollToContact}>Get Started</button>
             </div>
           </div>
         )}

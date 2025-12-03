@@ -84,7 +84,7 @@ const Hero = () => {
                     <p className="text-sm text-gray-600">Medical Image Processing</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-500" />
@@ -100,7 +100,7 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-green-50 rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Users className="h-4 w-4 text-green-600" />
@@ -109,7 +109,7 @@ const Hero = () => {
                 <p className="text-sm text-green-700">Be among the first healthcare professionals to experience AI MedKit</p>
               </div>
             </div>
-            
+
             {/* Floating elements */}
             <div className="absolute -top-4 -right-4 w-8 h-8 bg-green-400 rounded-full opacity-20"></div>
             <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-green-300 rounded-full opacity-30"></div>

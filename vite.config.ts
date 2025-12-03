@@ -3,12 +3,11 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ai-medkit-vitrine/', // For GitHub Pages
+  // Use relative asset paths so the site renders correctly whether it's served
+  // from the root domain or a sub-path (e.g., GitHub Pages).
+  base: './',
   server: {
     port: 3001,
-    host: true
+    host: true,
   },
-  build: {
-    outDir: 'dist'
-  }
 })

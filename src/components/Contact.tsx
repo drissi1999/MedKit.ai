@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, Calendar, Play, Users, CheckCircle, AlertCircle } from 'lucide-react';
+import { Phone, Mail, Clock, Send, Calendar, Play, Users, CheckCircle, AlertCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ Message: ${formData.message || 'No additional message'}
 This person wants to join the AI MedKit waitlist.`;
 
       // Open email client
-      const mailtoLink = `mailto:drissihoucine1999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:houcinemedkit.ai@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
 
       // Show success status
@@ -109,8 +109,8 @@ This person wants to join the AI MedKit waitlist.`;
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 mb-1 text-lg">Questions?</h4>
-                  <a href="mailto:drissihoucine1999@gmail.com" className="text-gray-700 text-lg hover:text-green-600 transition-colors">
-                    drissihoucine1999@gmail.com
+                  <a href="mailto:houcinemedkit.ai@gmail.com" className="text-gray-700 text-lg hover:text-green-600 transition-colors">
+                    houcinemedkit.ai@gmail.com
                   </a>
                   <p className="text-gray-600">We'll respond within 24 hours</p>
                 </div>
@@ -257,7 +257,7 @@ This person wants to join the AI MedKit waitlist.`;
                   <div>
                     <p className="text-sm text-red-800 font-medium">Oops!</p>
                     <p className="text-sm text-red-700">
-                      Something went wrong. Please try again or contact us directly at drissihoucine1999@gmail.com
+                      Something went wrong. Please try again or contact us directly at houcinemedkit.ai@gmail.com
                     </p>
                   </div>
                 </div>
