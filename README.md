@@ -114,7 +114,7 @@ https://drissi1999.github.io/ai-medkit-vitrine
 
 ## 📞 Contact Information
 
-- **Email**: drissihoucine1999@gmail.com
+- **Email**: houcinemedkit.ai@gmail.com
 - **Response Time**: Within 24 hours
 - **Waitlist**: Join via the website contact form
 
