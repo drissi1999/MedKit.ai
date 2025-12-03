@@ -2,6 +2,13 @@ import React from 'react';
 import { ArrowRight, Play, Activity, CheckCircle, Users } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="section bg-white">
       <div className="container">
@@ -12,19 +19,19 @@ const Hero = () => {
               <Activity className="h-4 w-4" />
               Coming Soon - Revolutionary Medical AI Platform
             </div>
-            
+
             <h1 className="heading-xl mb-6">
-              Transform Healthcare with 
+              Transform Healthcare with
               <span className="accent-green"> AI MedKit</span>
             </h1>
-            
+
             <p className="text-large mb-8">
-              Experience the future of medical diagnostics with our comprehensive AI platform. 
+              Experience the future of medical diagnostics with our comprehensive AI platform.
               Advanced image analysis, intelligent patient management, and evidence-based decision support.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="btn-primary flex items-center justify-center gap-2">
+              <button className="btn-primary flex items-center justify-center gap-2" onClick={scrollToContact}>
                 Join Early Access
                 <ArrowRight className="h-5 w-5" />
               </button>
@@ -64,7 +71,7 @@ const Hero = () => {
                     <p className="text-sm text-gray-600">Medical Image Processing</p>
                   </div>
                 </div>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-500" />
@@ -80,7 +87,7 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-green-50 rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Users className="h-4 w-4 text-green-600" />
@@ -89,7 +96,7 @@ const Hero = () => {
                 <p className="text-sm text-green-700">Be among the first healthcare professionals to experience AI MedKit</p>
               </div>
             </div>
-            
+
             {/* Floating elements */}
             <div className="absolute -top-4 -right-4 w-8 h-8 bg-green-400 rounded-full opacity-20"></div>
             <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-green-300 rounded-full opacity-30"></div>
