@@ -2,6 +2,20 @@ import React from 'react';
 import { ArrowRight, Play, Activity, CheckCircle, Users } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="section bg-white">
       <div className="container">
@@ -12,25 +26,31 @@ const Hero = () => {
               <Activity className="h-4 w-4" />
               Coming Soon - Revolutionary Medical AI Platform
             </div>
-            
+
             <h1 className="heading-xl mb-6">
-              Transform Healthcare with 
+              Transform Healthcare with
               <span className="accent-green"> AI MedKit</span>
             </h1>
-            
+
             <p className="text-large mb-8">
-              Experience the future of medical diagnostics with our comprehensive AI platform. 
+              Experience the future of medical diagnostics with our comprehensive AI platform.
               Advanced image analysis, intelligent patient management, and evidence-based decision support.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="btn-primary flex items-center justify-center gap-2">
+              <button
+                onClick={scrollToContact}
+                className="btn-primary flex items-center justify-center gap-2"
+              >
                 Join Early Access
                 <ArrowRight className="h-5 w-5" />
               </button>
-              <button className="btn-secondary flex items-center justify-center gap-2">
+              <button
+                onClick={scrollToPricing}
+                className="btn-secondary flex items-center justify-center gap-2"
+              >
                 <Play className="h-5 w-5" />
-                Coming Soon
+                View Plans
               </button>
             </div>
 
@@ -45,8 +65,8 @@ const Hero = () => {
                 <div className="text-gray-600 text-sm">Faster Analysis</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 mb-1">Q1 2025</div>
-                <div className="text-gray-600 text-sm">Launch Date</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">Q2 2025</div>
+                <div className="text-gray-600 text-sm">Expected Launch</div>
               </div>
             </div>
           </div>

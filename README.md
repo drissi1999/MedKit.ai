@@ -95,6 +95,14 @@ npm run build
 npm run preview
 ```
 
+### Deploy to GitHub Pages
+```bash
+npm run deploy
+```
+
+This will build the project and deploy to GitHub Pages at:
+https://drissi1999.github.io/ai-medkit-vitrine
+
 ## 🌟 Key Differentiators
 
 - **Medical AI Focus**: Specifically designed for healthcare
@@ -106,11 +114,9 @@ npm run preview
 
 ## 📞 Contact Information
 
-- **Support**: +1 (555) AI-MEDKIT
-- **Demo Requests**: demo@aimedkit.com  
-- **Sales**: Available 24/7
-- **Response Time**: Within 4 hours
-- **Demo Access**: Credentials provided within 2 hours
+- **Email**: drissihoucine1999@gmail.com
+- **Response Time**: Within 24 hours
+- **Waitlist**: Join via the website contact form
 
 ## 🎯 Target Audience
 

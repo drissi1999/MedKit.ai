@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, Calendar, Play, Users } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Calendar, Play, Users, CheckCircle, AlertCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,12 +10,21 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Create email content
-    const subject = `AI MedKit Waitlist - ${formData.name}`;
-    const body = `Name: ${formData.name}
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Simulate form submission delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Create email content
+      const subject = `AI MedKit Waitlist - ${formData.name}`;
+      const body = `Name: ${formData.name}
 Email: ${formData.email}
 Organization: ${formData.organization || 'Not specified'}
 Medical Specialty: ${formData.specialty || 'Not specified'}
@@ -23,21 +32,31 @@ Message: ${formData.message || 'No additional message'}
 
 This person wants to join the AI MedKit waitlist.`;
 
-    // Open email client
-    const mailtoLink = `mailto:drissihoucine1999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink);
+      // Open email client
+      const mailtoLink = `mailto:drissihoucine1999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
 
-    // Show confirmation
-    alert('✅ Your email client should open with a pre-filled message. Send it to join the waitlist!');
+      // Show success status
+      setSubmitStatus('success');
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      organization: '',
-      specialty: '',
-      message: ''
-    });
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          organization: '',
+          specialty: '',
+          message: ''
+        });
+        setSubmitStatus('idle');
+      }, 3000);
+
+    } catch (error) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -86,23 +105,25 @@ This person wants to join the AI MedKit waitlist.`;
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <div className="bg-gradient-to-r from-green-500 to-green-600 p-3 rounded-xl">
-                  <Phone className="h-6 w-6 text-white" />
+                  <Mail className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-1 text-lg">24/7 Support Hotline</h4>
-                  <p className="text-gray-700 text-lg">+1 (555) AI-MEDKIT</p>
-                  <p className="text-gray-600">Immediate technical assistance</p>
+                  <h4 className="font-bold text-gray-900 mb-1 text-lg">Questions?</h4>
+                  <a href="mailto:drissihoucine1999@gmail.com" className="text-gray-700 text-lg hover:text-green-600 transition-colors">
+                    drissihoucine1999@gmail.com
+                  </a>
+                  <p className="text-gray-600">We'll respond within 24 hours</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <div className="bg-gradient-to-r from-green-500 to-green-600 p-3 rounded-xl">
-                  <Mail className="h-6 w-6 text-white" />
+                  <Clock className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-1 text-lg">Direct Contact</h4>
-                  <p className="text-gray-700 text-lg">drissihoucine1999@gmail.com</p>
-                  <p className="text-gray-600">Response within 4 hours</p>
+                  <h4 className="font-bold text-gray-900 mb-1 text-lg">Fast Response</h4>
+                  <p className="text-gray-700 text-lg">Quick turnaround time</p>
+                  <p className="text-gray-600">Typically within 4-24 hours</p>
                 </div>
               </div>
             </div>
@@ -201,19 +222,55 @@ This person wants to join the AI MedKit waitlist.`;
 
                 <button
                   type="submit"
-                  className="btn-primary w-full flex items-center justify-center gap-2 text-lg"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full flex items-center justify-center gap-2 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Send className="h-5 w-5" />
-                  Join Waitlist
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5" />
+                      Join Waitlist
+                    </>
+                  )}
                 </button>
               </div>
 
-              <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <p className="text-sm text-blue-700">
-                  <strong>How it works:</strong> Clicking "Join Waitlist" will open your email client
-                  with a pre-filled message. Simply send the email to complete your registration!
-                </p>
-              </div>
+              {submitStatus === 'success' && (
+                <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200 flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-green-800 font-medium">Success!</p>
+                    <p className="text-sm text-green-700">
+                      Your email client should open. Please send the email to complete your waitlist registration.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mt-6 p-4 bg-red-50 rounded-lg border border-red-200 flex items-start gap-3">
+                  <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-red-800 font-medium">Oops!</p>
+                    <p className="text-sm text-red-700">
+                      Something went wrong. Please try again or contact us directly at drissihoucine1999@gmail.com
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === 'idle' && (
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <p className="text-sm text-blue-700">
+                    <strong>How it works:</strong> Clicking "Join Waitlist" will open your email client
+                    with a pre-filled message. Simply send the email to complete your registration!
+                  </p>
+                </div>
+              )}
             </form>
           </div>
         </div>
