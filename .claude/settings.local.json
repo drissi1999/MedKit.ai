@@ -4,7 +4,11 @@
       "Bash(npm run dev:*)",
       "Bash(npm run build:*)",
       "Bash(npm install:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix all website issues for production deployment\n\n- Add missing favicon (medkit-icon.svg) to fix 404 error\n- Update launch date from Q1 2025 to Q2 2025\n- Enhance contact form with loading states and error handling\n- Add smooth scroll functionality to hero buttons\n- Replace fake phone number with real email contact\n- Install gh-pages package for deployment\n- Update README with correct contact info and deployment instructions\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
