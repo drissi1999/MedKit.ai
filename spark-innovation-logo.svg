@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sparkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="url(#sparkGradient)"/>
+  <g transform="translate(50, 50)">
+    <!-- Spark/Star shape -->
+    <path d="M50 10 L60 40 L90 40 L68 58 L78 88 L50 70 L22 88 L32 58 L10 40 L40 40 Z" fill="white" opacity="0.9"/>
+    <!-- Additional sparkles -->
+    <circle cx="20" cy="20" r="3" fill="white" opacity="0.7"/>
+    <circle cx="80" cy="25" r="2.5" fill="white" opacity="0.7"/>
+    <circle cx="25" cy="75" r="2" fill="white" opacity="0.7"/>
+    <circle cx="75" cy="70" r="2.5" fill="white" opacity="0.7"/>
+  </g>
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">SPARK</text>
+  <text x="100" y="180" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">INNOVATION</text>
+</svg>
+
