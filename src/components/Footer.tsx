@@ -27,7 +27,7 @@ const Footer = () => {
               <a href="#" className="text-white/60 hover:text-blue-400 transition-colors">
                 <Twitter className="h-6 w-6" />
               </a>
-              <a href="#" className="text-white/60 hover:text-blue-400 transition-colors">
+              <a href="https://www.linkedin.com/company/medkit-ai/about/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-blue-400 transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
               <a href="#" className="text-white/60 hover:text-blue-400 transition-colors">

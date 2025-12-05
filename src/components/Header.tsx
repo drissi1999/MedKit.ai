@@ -28,6 +28,7 @@ const Header = () => {
 
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Features</a>
+            <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">About</a>
             <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Pricing</a>
             <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Contact</a>
             <button className="btn-primary" onClick={scrollToContact}>Get Started</button>
@@ -45,6 +46,7 @@ const Header = () => {
           <div className="md:hidden pb-4 border-t border-gray-100 pt-4">
             <div className="flex flex-col space-y-4">
               <a href="#features" className="text-gray-600 hover:text-gray-900 font-medium">Features</a>
+              <a href="#about" className="text-gray-600 hover:text-gray-900 font-medium">About</a>
               <a href="#pricing" className="text-gray-600 hover:text-gray-900 font-medium">Pricing</a>
               <a href="#contact" className="text-gray-600 hover:text-gray-900 font-medium" onClick={() => setIsMenuOpen(false)}>
                 Contact
